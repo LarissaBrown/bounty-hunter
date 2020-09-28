@@ -10,15 +10,15 @@ export default function App(){
     useEffect(() => {
         axios.get("/bounties")
             .then(res => console.log('hello'))
-        // .then(res => {
-        //     console.log(res.data)
-        //     setBounties([
+        .then(res => {
+            console.log(res.data)
+            setBounties([
                 
-        //         { firstName: "Halo", lastName:"Vinix", isLiving: false, bountyAmount: 0, type: "Jedi"},
+                { firstName: "Halo", lastName:"Vinix", isLiving: false, bountyAmount: 0, type: "Jedi"},
                 
-        //     ])
-        // })
-        // .catch(err => console.log(err))
+            ])
+        })
+        .catch(err => console.log(err))
     },[])
     return (
         <div>
