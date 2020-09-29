@@ -6,9 +6,6 @@ export default function Bounty(props){
         <div>
           <h1>Name:{firstName} {lastName}</h1>
           <h2>{type}</h2>
-          <h2>{type}</h2>
-          <h2>{type}</h2>
-          <p>amren</p>
         </div>
     )
 }

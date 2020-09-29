@@ -10,6 +10,7 @@ const bounties = [
 ]
 //Get All
 bountyRouter.get("/", (req, res)=> {
+    console.log('Calling the Home Route!!!')
     res.send(bounties)
 })
 
