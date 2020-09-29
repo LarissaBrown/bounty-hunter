@@ -9,16 +9,11 @@ export default function App(){
     const [bounties, setBounties] = useState([])
     useEffect(() => {
         axios.get("/bounties")
-            .then(res => console.log('hello'))
         .then(res => {
             console.log(res.data)
-            setBounties([
-                
-                { firstName: "Halo", lastName:"Vinix", isLiving: false, bountyAmount: 0, type: "Jedi"},
-                
-            ])
+            setBounties([res.data])
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
     },[])
     return (
         <div>
