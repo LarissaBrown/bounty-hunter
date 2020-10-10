@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express()
 const morgan = require("morgan");
-const bounties = require("./routes/bountyRouter");
+//const bounties = require("./routes/bountyRouter");
 const {v4} = require("uuid")
 const cors =  require("cors");
 const path = require("path")
@@ -15,7 +15,7 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({extended: false}));
-app.use("/", bounties);
+app.use("/bounties", require("./routes/bountyRouter"));
 
 app.listen(9000, ()=> {
     console.log("The server is running on Port 9000")

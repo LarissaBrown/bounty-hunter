@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "cors": "^2.8.5",
+    "json": "^10.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3"
@@ -33,6 +34,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://localhost:9000",
+  "proxy": "http://localhost:9000",
   "secure": true
 }
