@@ -28,6 +28,7 @@ export default function Bounty(props){
             lastName={lastName}
             type={type}
             btnText="Submit Edit"
+            submit={props.editBounty}
             />
             <button
               onClick={()=> setEditToggle(prevEditToggle => !prevEditToggle)}>

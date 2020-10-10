@@ -10,30 +10,41 @@ const bounties = [
 ]
 //Get All
 bountyRouter.get("/", (req, res)=> {
-    console.log('Calling the Home Route!!!')
+    res.status(200)
     res.send(bounties)
 })
 
 
 
 //Get One 
-bountyRouter.get("/:bountyId", (req, res) => {
+bountyRouter.get("/:bountyId", (req, res, next) => {
     const bountyId = req.params.bountyId
     const foundBounty = bounties.find(bounty => bounty._id === bountyId)
-    res.send(foundBounty)
+    if(!foundBounty){
+        const error = new Error("The item was not found")
+        res.status(500)
+        return next(error)
+    }
+    res.status(200).send(foundBounty)
+    
 })
 //Get by Type
-bountyRouter.get("/search/type", (req, res) => {
+bountyRouter.get("/search/type", (req, res, next) => {
     const type = req.query.type
     const filteredBounties = bounties.filter(bounty => bounty.type === type)
-    res.send(filteredBounties)
+    if(!type) {
+        const error = new Error("You must provide a type")
+        res.status(500)
+        return next(error)
+    }
+    res.status(200).send(filteredBounties)
 })
 //Post One
 bountyRouter.post("/", (req, res)=> {
     const newBounty = req.body
     newBounty._id = v4()
     bounties.push(newBounty)
-    res.send(newBounty)
+    res.status(201).send(newBounty)
 })
 
 //Delete One
@@ -49,6 +60,6 @@ bountyRouter.put("/:bountyId", (req, res) => {
     const bountyId = req.params.bountyId
     const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId)
     const updatedBounty = Object.assign(bounties[bountyIndex], req.body)
-    res.send(updatedBounty)
+    res.status(201).send(updatedBounty)
 })
 module.exports = bountyRouter 
