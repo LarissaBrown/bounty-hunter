@@ -5,15 +5,11 @@ import AddBountyForm from "./components/AddBountyForm"
 import './styles.css'
 
 
-
-
-
-
 export default function App(props){
     const [bounties, setBounties] = useState([])
 
     function getBounties() {
-        axios.get("http://localhost:9000/bounties")
+        axios.get("/bounties")
         .then(res => {
             console.log("Bounties", res.data)
             setBounties(res.data)
@@ -22,7 +18,7 @@ export default function App(props){
     }
 
     function addBounty(newBounty){
-        axios.post("http://localhost:9000/bounties",  newBounty)
+        axios.post("/bounties",  newBounty)
         .then(res => {
             setBounties(prevBounties => [...prevBounties, res.data])
         })
@@ -30,7 +26,7 @@ export default function App(props){
     }
 
     function deleteBounty(bountyId){
-        axios.delete(`http://localhost:9000/bounties/${bountyId}`)
+        axios.delete(`/bounties/${bountyId}`)
             .then(res => {setBounties(prevBounties => prevBounties.filter(bounty => bounty._id !== bountyId))})
             .catch(err => console.log(err))
     }
@@ -51,6 +47,7 @@ export default function App(props){
                 key={bounty.firstName}
                 deleteBounty={deleteBounty} />)}
             </div>
+            <img src={require("./components/huntressImg.png")} className="huntressImg" alt="huntress"/>
         </div>
     )
     }

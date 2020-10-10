@@ -19,12 +19,18 @@ p {
 
 .bounty-container {
     display: flex;
+    position: absolute;
     flex-direction: column;
     margin: 0 32px;
     background-color: grey;
 
 }
-
+.huntressImg {
+    position: relative;
+    float: right;
+    z-index: 1;
+  width: 30%;
+}
 .bounty {
     border: 1px solid black;
     padding: 10px;

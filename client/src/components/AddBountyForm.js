@@ -19,6 +19,7 @@ export default function AddBountyForm(props){
     function handleSubmit(e){
         e.preventDefault()
         props.submit(inputs, props._id)
+        
         setInputs(initInputs)
     }
     return (
