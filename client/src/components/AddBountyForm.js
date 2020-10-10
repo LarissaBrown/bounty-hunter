@@ -7,7 +7,7 @@ export default function AddBountyForm(props){
         lastName: props.lastName || "", 
         type: props.type || ""
     }
-
+    console.log(props)
     const [inputs, setInputs] = useState(initInputs)
 
     function handleChange(e){
@@ -15,9 +15,10 @@ export default function AddBountyForm(props){
         console.log(inputs)
         setInputs(prevInputs => ({...prevInputs, [name]: value}))
     }
+
     function handleSubmit(e){
         e.preventDefault()
-        props.submit(inputs)
+        props.submit(inputs, props._id)
         setInputs(initInputs)
     }
     return (
