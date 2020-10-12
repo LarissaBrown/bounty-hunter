@@ -30,6 +30,13 @@ export default function App(props){
             .then(res => {setBounties(prevBounties => prevBounties.filter(bounty => bounty._id !== bountyId))})
             .catch(err => console.log(err))
     }
+    function editBounty(updates, bountyId){
+        axios.put(`/bounties/${bountyId}`, updates)
+        .then(res => {
+            setBounties(prevBounties => prevBounties.filter(bounty => bounty._id !== bountyId ? bounty : res.data))
+        })
+        .catch(err => console.log(err))
+    }
 
     useEffect(() => {
         getBounties()
@@ -45,7 +52,8 @@ export default function App(props){
                 {bounties.map(bounty => 
                 <Bounty {...bounty} 
                 key={bounty.firstName}
-                deleteBounty={deleteBounty} />)}
+                deleteBounty={deleteBounty}
+                editBounty={editBounty} />)}
             </div>
             <img src={require("./components/huntressImg.png")} className="huntressImg" alt="huntress"/>
         </div>
