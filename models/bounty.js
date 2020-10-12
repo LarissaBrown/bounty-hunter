@@ -16,11 +16,11 @@ const bountySchema = new Schema({
         type: String,
         required: true
     },
-    isAlive: {
+    isLiving: {
         type: Boolean,
         required: false
     },
-    price: {
+    bountyAmount: {
         type: Number,
         required: false,
     }
